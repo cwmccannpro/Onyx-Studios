@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Independent web design and development by Cameron McCann in Buffalo, NY. Custom websites for small businesses, from design to launch." />
+    <meta name="theme-color" content="#070708" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Onyx Studios — Web Design &amp; Development</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      (function (C, A, L) {
+        const push = function (api, args) { api.q.push(args); };
+        const document = C.document;
+        C.Cal = C.Cal || function () {
+          const cal = C.Cal;
+          const args = arguments;
+          if (!cal.loaded) {
+            cal.ns = {};
+            cal.q = cal.q || [];
+            const script = document.createElement("script");
+            script.src = A;
+            script.async = true;
+            script.onload = function () { document.documentElement.dataset.calReady = "true"; };
+            document.head.appendChild(script);
+            cal.loaded = true;
+          }
+          if (args[0] === L) {
+            const api = function () { push(api, arguments); };
+            const namespace = args[1];
+            api.q = api.q || [];
+            if (typeof namespace === "string") {
+              cal.ns[namespace] = cal.ns[namespace] || api;
+              push(cal.ns[namespace], args);
+              push(cal, ["initNamespace", namespace]);
+            } else {
+              push(cal, args);
+            }
+            return;
+          }
+          push(cal, args);
+        };
+      })(window, "https://app.cal.com/embed/embed.js", "init");
+
+      Cal("init", "cwmccann", { origin: "https://app.cal.com" });
+      Cal.config = Cal.config || {};
+      Cal.config.forwardQueryParams = true;
+
+      // Match Onyx's cream accents and near-black surfaces inside the booking iframe.
+      const onyxBookingColors = {
+        "cal-brand": "#DEDBC8",
+        "cal-brand-text": "#070708",
+        "cal-brand-emphasis": "#E1E0CC",
+        "cal-brand-muted": "#2A2A2F",
+        "cal-brand-subtle": "#AFAD9E",
+        "cal-brand-accent": "#070708",
+        "cal-bg": "#0C0C0E",
+        "cal-bg-emphasis": "#1E1E22",
+        "cal-bg-subtle": "#111113",
+        "cal-bg-muted": "#161619",
+        "cal-bg-inverted": "#E1E0CC",
+        "cal-text": "#E1E0CC",
+        "cal-text-emphasis": "#E1E0CC",
+        "cal-text-subtle": "#AFAD9E",
+        "cal-text-muted": "#868579",
+        "cal-text-inverted": "#070708",
+        "cal-border": "#2A2A2F",
+        "cal-border-emphasis": "#484840",
+        "cal-border-subtle": "#1E1E22",
+        "cal-border-muted": "#161619",
+        "cal-border-booker": "#2A2A2F"
+      };
+      Cal.ns.cwmccann("ui", {
+        theme: "dark",
+        colorScheme: "dark",
+        hideEventTypeDetails: false,
+        layout: "month_view",
+        cssVarsPerTheme: { dark: onyxBookingColors, light: onyxBookingColors }
+      });
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

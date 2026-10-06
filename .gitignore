@@ -1,0 +1,11 @@
+node_modules
+dist
+*.local
+
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.claude/
+.DS_Store
+npm-debug.log*

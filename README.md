@@ -31,3 +31,22 @@ The production output is in `dist/`.
 - Project booking: https://cal.com/cameron-mccann-9prmcz/cwmccann
 
 Shared contact details live in `src/data.ts`. The Cal.com embed and its colors are configured in `index.html`.
+
+## Cloudflare Workers deployment
+
+Live site: https://onyx.cwmccann.pro
+
+Log in to the Cloudflare account that owns `cwmccann.pro`, then deploy:
+
+```sh
+npx wrangler login
+npm run deploy
+```
+
+The deploy command builds the site and uploads `dist/` to the `onyx-studios` Worker. `wrangler.jsonc` configures the custom domain and single-page application routing.
+
+To validate the build and Worker configuration:
+
+```sh
+npm run deploy:check
+```

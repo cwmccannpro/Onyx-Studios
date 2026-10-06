@@ -9,3 +9,7 @@ dist
 .claude/
 .DS_Store
 npm-debug.log*
+.wrangler/
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
